@@ -1,0 +1,102 @@
+body{
+    margin:0px;
+    padding: 0px;
+}
+@font-face {
+    font-family: myFont;
+    src: url("./Shadows_Into_Light/ShadowsIntoLight-Regular.ttf");
+}
+.masthead{
+    background-image: url("./k8-8ZpLCdnxSBk-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 175px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-family: myFont;
+}
+.masthead h1{
+    font-weight: bold;
+    padding-left:15px;
+    padding-right:15px;
+}
+.masthead hr{
+    color:white;
+    width:50%;
+    font-size: x-large;
+    padding-left:15px;
+}
+.masthead-btn{
+    background-color: rgb(191, 186, 186, 0.5);
+    width:fit-content;
+    margin:0px auto;
+    padding:0.5rem 2.5rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color:white;
+}
+.masthead-btn:hover{
+    background-color: rgb(191, 186, 186, 0.75);
+}
+
+.contacts-container{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+    
+}
+.contacts-container a{
+    text-decoration: none;
+    color:black;
+}
+.contacts-container hr{
+    width:50%;
+    color:light blue
+}
+.contacts-container h2{
+    font-family: myFont;
+    padding-bottom: 0px;
+    margin-bottom:0px
+}
+.contacts-btn{
+    width:fit-content;
+    background-color: rgb(191, 186, 186, 0.5);
+    margin: 0px auto;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding:0.5rem 2.5rem;
+    border-radius: 1rem;
+}
+.contacts-btn:hover{
+    background-color: rgb(191, 186, 186, 0.7);
+    padding:0.6rem 2.6rem;
+}
+.footer{
+    background-color: rgb(191, 186, 186, 0.8);
+    height: 100%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin-bottom:0px
+}
+.footer-content{
+    text-align: center;
+}
+
+/*Start Page*/
+.main-conteiner{
+    background-color: white;
+    background-image: none;
+    width:85%;
+    height: 90%;
+    position: absolute;
+    z-index: 1;
+    border-radius: 30px;
+    border-color: rgb(16, 16, 16, 0.3);
+    margin-top:3rem;
+}
