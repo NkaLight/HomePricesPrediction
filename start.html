@@ -13,8 +13,54 @@
            flex-direction:row;
            justify-content:center;
     ">
-    <div class="main-conteiner">
-        
+    <div class="main-container">
+        <h2>Predict Home Prices</h2>
+        <hr/>
+        <form class="predict-form">
+            <label for="numRooms">Number of rooms:</label><br/>
+            <input type="text" title="number of rooms" id="numRooms" placeholder="no. of rooms" class="predict-form-input-text"/>
+        </form>
     </div>
+    <script>
+        function runPrediction(){
+            // Get the input value from the input field
+            var inputValue = document.getElementById("inputValue").value;
+
+            // Send AJAX request to R script
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "exampleScript.R?input=" + inputValue, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Parse the JSON response
+                    var response = JSON.parse(xhr.responseText);
+
+                    console.log(response)
+                    // Display the prediction output in the HTML element with the ID "predictionOutput"
+                    document.getElementById("predictionOutput").textContent = "Predicted Value: " + response.prediction;
+                }
+            };
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    console.log("Raw Response:", xhr.responseText);
+            
+                    if (xhr.status == 200) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            console.log("Parsed Response:", response);
+            
+                            // Display the prediction output
+                            document.getElementById("predictionOutput").textContent = "Predicted Value: " + response.prediction;
+                        } catch (error) {
+                            console.error("Error parsing JSON response:", error);
+                        }
+                    } else {
+                        console.error("Error in the AJAX request. Status:", xhr.status);
+                    }
+                }
+            };
+            
+            xhr.send();
+        }
+    </script>
 </body>
 </html>

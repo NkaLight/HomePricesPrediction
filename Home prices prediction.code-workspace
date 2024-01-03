@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Home prices prediction",
+			"path": "./exampleScript"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Home prices prediction"
+	}
+}
