@@ -16,50 +16,44 @@
     <div class="main-container">
         <h2>Predict Home Prices</h2>
         <hr/>
-        <form class="predict-form">
-            <label for="numRooms">Number of rooms:</label><br/>
-            <input type="text" title="number of rooms" id="numRooms" placeholder="no. of rooms" class="predict-form-input-text"/>
+        <p id="predictionOutput" class="predictionOutput"></p>
+        <button type="button" onclick="initiatePrediction()" class="btn" id="initiatePredictionBtn">Make another prediction</button>
+        <form class="predict-form" id="predictForm">
+            <label for="numRooms">Modern finishes:</label>
+            <input type="checkbox" title="nearShoppingMalls" checked="false" class="predict-form-input-checkbox"/>
+            <br/>
+            <br/>
+            <label for="numRooms">Rooms:</label><br/>
+            <input type="text" title="number of rooms" placeholder="no. of rooms" class="predict-form-input-text"/>
+            <label for="numRooms">Bathrooms</label><br/>
+            <input type="text" title="number of bathrooms" id="numBathRooms" placeholder="no. of bathrooms" class="predict-form-input-text"/>
+            <label for="numRooms">Living rooms:</label><br/>
+            <input type="text" title="number of rooms" id="numLivingRooms" placeholder="no. of rooms" class="predict-form-input-text"/>
+            <label>Close to:</label><br/>
+            <label for="numRooms">Schools</label>
+            <input type="checkbox" id="numRooms" checked="false" class="predict-form-input-checkbox"/>
+            <br/>
+            <label for="numRooms">Shopping malls</label>
+            <input type="checkbox" title="nearShoppingMalls" checked="false" class="predict-form-input-checkbox"/>
+            <br/>
+            <br/>
+            <button type="button" class="form-submit" onclick="runPrediction()">Make prediction</button>
         </form>
     </div>
     <script>
+        
         function runPrediction(){
-            // Get the input value from the input field
-            var inputValue = document.getElementById("inputValue").value;
+            document.getElementById("predictForm").style.display = "none";
+            document.getElementById("predictionOutput").style.display = "block";
+            document.getElementById("predictionOutput").textContent = "Predicted Prices: NZD" + 1234567;
+            document.getElementById("initiatePredictionBtn").style.display = "block";
+        }
+        function initiatePrediction(){
+            document.getElementById("initiatePredictionBtn").style.display = "none";
+            document.getElementById("predictionOutput").style.display = "none";
+            document.getElementById("predictForm").style.display = "block";
 
-            // Send AJAX request to R script
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "exampleScript.R?input=" + inputValue, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Parse the JSON response
-                    var response = JSON.parse(xhr.responseText);
 
-                    console.log(response)
-                    // Display the prediction output in the HTML element with the ID "predictionOutput"
-                    document.getElementById("predictionOutput").textContent = "Predicted Value: " + response.prediction;
-                }
-            };
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    console.log("Raw Response:", xhr.responseText);
-            
-                    if (xhr.status == 200) {
-                        try {
-                            var response = JSON.parse(xhr.responseText);
-                            console.log("Parsed Response:", response);
-            
-                            // Display the prediction output
-                            document.getElementById("predictionOutput").textContent = "Predicted Value: " + response.prediction;
-                        } catch (error) {
-                            console.error("Error parsing JSON response:", error);
-                        }
-                    } else {
-                        console.error("Error in the AJAX request. Status:", xhr.status);
-                    }
-                }
-            };
-            
-            xhr.send();
         }
     </script>
 </body>
